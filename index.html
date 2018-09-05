@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>App Launcher</title>
+  <script src="protocolcheck.js"></script>
+</head>
+
+<body>
+  <button id="start">Start</button>
+
+  <script>
+    document.getElementById('start').addEventListener('click', function() {
+      checkInstalled();
+    });
+
+    function isInstalled() {
+      console.log('Launched');
+    }
+
+    function checkInstalled() {
+      var interval;
+
+      protocolCheck('verstehe-ra://start', function() {
+        window.location = '/launcher';
+
+        interval = setInterval(function() {
+          protocolCheck('verstehe-ra://start', null, function() {
+            isInstalled();
+            clearInterval(interval);
+          });
+        }, 500);
+      }, function() {
+        isInstalled();
+      }, function() {
+        console.error('Not supported');
+      });
+    }
+  </script>
+</body>
+</html>

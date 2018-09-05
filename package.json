@@ -1,0 +1,16 @@
+{
+  "name": "app-launcher",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mintert/app-launcher"
+  },
+  "author": "Lorenz Mintert"
+}
